@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIExplodingButtonDelegate {
+class ViewController: UIViewController, UIExplodingButtonDelegate, UIAlertViewDelegate {
 
     @IBOutlet weak var explodingButton: UIExplodingButton!
     
@@ -43,7 +43,29 @@ class ViewController: UIViewController, UIExplodingButtonDelegate {
     }
     
     func touchUpInside(button: UIButton) {
-        
+        var title = ""
+        switch button.tag {
+            case 1:
+                title = "First"
+            case 2:
+                title = "Second"
+            case 3:
+                title = "Third"
+            case 4:
+                title = "Forth"
+            case 5:
+                title = "Fifth"
+            case 6:
+                title = "Sixth"
+            default:
+                title = "\(button.tag)"
+        }
+
+        UIAlertView(title: "", message: title, delegate: self, cancelButtonTitle: nil, otherButtonTitles: "OK").show()
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        self.explodingButton.explode()
     }
 }
 
